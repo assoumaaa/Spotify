@@ -1,0 +1,78 @@
+@import '../sass/Global.scss';
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+    color: $spotify;
+    height: 50%;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Didact Gothic', sans-serif;
+
+
+    img {
+        border-radius: 10%;
+    }
+
+    .information-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+
+        button {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+
+
+            &:hover,
+            &:focus {
+                background-color: white;
+                color: black;
+            }
+        }
+
+
+
+
+        .username {
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-information {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+
+
+            .each {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 4rem;
+
+                .numbers {
+                    color: gray;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
