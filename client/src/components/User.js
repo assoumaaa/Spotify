@@ -10,7 +10,7 @@ const User = () => {
 
   const { user, following, playlists } = GetUserInfo();
   const { topArtists, topTracks } = GetArtistsTracks();
-
+  
   return (
     user && (
       <>

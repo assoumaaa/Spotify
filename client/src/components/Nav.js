@@ -1,55 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../sass/Nav.scss';
 import { BsSpotify } from "react-icons/bs";
 import { RiUser3Fill, RiMusic2Fill, RiPlayList2Fill, RiMicFill, RiSkipBackFill } from "react-icons/ri";
 
 
 const Nav = () => {
+
+    const navTitles = ['Profile', 'Top Artists', 'Top Tracks', 'Recent', 'Playlists']
+    const navIcons = [<RiUser3Fill />, <RiMicFill />, <RiMusic2Fill />, <RiSkipBackFill />, <RiPlayList2Fill />]
+    const hrefs = ['/', '/topArtists', '/', '/', '/']
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+
+
     return (
         <div className="nav">
             <div className="wrapper">
                 <div className="spotify-logo"><BsSpotify className='logo spotify' /></div>
                 <div className="list">
-                    <div className="bar-items">
-                        <a href='/'>
-                            <div className="information">
-                                <div className="icon"><RiUser3Fill /></div>
-                                <span>Profile</span>
+                    {
+                        navTitles.map((title, index) => (
+                            <div className={`bar-items ${index === selectedIndex ? 'selected' : ''}`} onClick={() => setSelectedIndex(index)}>
+                                <a href={hrefs[index]} >
+                                    <div className="information">
+                                        <div className="icon">{navIcons[index]}</div>
+                                        <span>{title}</span>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <div className="bar-items">
-                        <a href='/topArtists'>
-                            <div className="information">
-                                <div className="icon"><RiMicFill /></div>
-                                <span>Top Artists</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div className="bar-items">
-                        <a href=''>
-                            <div className="information">
-                                <div className="icon"><RiMusic2Fill /></div>
-                                <span>Top Tracks</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div className="bar-items">
-                        <a href=''>
-                            <div className="information">
-                                <div className="icon"><RiSkipBackFill /></div>
-                                <span>Recent</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div className="bar-items">
-                        <a href=''>
-                            <div className="information">
-                                <div className="icon"><RiPlayList2Fill /></div>
-                                <span>Playlists</span>
-                            </div>
-                        </a>
-                    </div>
+                        ))
+                    }
                 </div>
                 <a href='https://omar-assouma.netlify.app/'><div className="myIcon"> 👨🏻‍💻 </div></a>
             </div>

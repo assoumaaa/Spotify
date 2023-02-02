@@ -72,6 +72,14 @@
                         color: white;
                     }
                 }
+
+                &.selected {
+                    background-color: $background;
+
+                    a {
+                        color: $spotify;
+                    }
+                }
             }
         }
     }

@@ -1,0 +1,17 @@
+@import '../sass/Global.scss';
+
+
+.topArtists {
+    color: white;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    
+    .title{
+        display: flex;
+    
+        .sorting{
+            display: flex;
+        }
+    }
+}

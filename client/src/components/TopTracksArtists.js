@@ -1,13 +1,18 @@
-import React from 'react'
+import { React, useState } from 'react'
 import '../sass/TopTracksArtists.scss'
+import Loading from './Loading';
+
+
 
 const TopTracksArtists = ({ topArtists, topTracks }) => {
 
-    console.log(topTracks);
-
-
+    const [isLoading, setIsLoading] = useState(true);
+    if (isLoading) {
+        setIsLoading(false);
+    }
+    
     return (
-        topArtists && topTracks && (
+        topArtists && topTracks ? (
             <div className="top-container">
                 <div className="wrapper">
                     <div className="mapping-wrapper">
@@ -15,13 +20,15 @@ const TopTracksArtists = ({ topArtists, topTracks }) => {
                             <span className='title'>Top Artists Of All time</span>
                             <a href='/topArtists'><button>See More</button></a>
                         </div>
-                        {topArtists.map(artist => (
-                            <div className="artists">
-                                <img src={artist.images[2].url} alt='artist'/>
-                                <span >{artist.name}</span>
-                            </div>
-                        ))}
-
+                        {topArtists.map(artist => {
+                            let key = artist.id;
+                            return (
+                                <div className="artists" key={key}>
+                                    <img src={artist.images[2].url} alt='artist' />
+                                    <span >{artist.name}</span>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
                 <div className="wrapper">
@@ -30,18 +37,23 @@ const TopTracksArtists = ({ topArtists, topTracks }) => {
                             <span className='title'>Top Tracks Of All Time</span>
                             <button>See More</button>
                         </div>
-                        {topTracks.map(tracks => (
-                            <div className="tracks">
-                                <img src={tracks.album.images[2].url} alt='cover'/>
-                                <div className="track-artist-name">
-                                    <span className='track-name'>{tracks.name}</span>
-                                    <span className='artist-name' >{tracks.artists[0].name}</span>
+                        {topTracks.map(tracks => {
+                            let key = tracks.id;
+                            return (
+                                <div className="tracks" key={key}>
+                                    <img src={tracks.album.images[2].url} alt='cover' />
+                                    <div className="track-artist-name">
+                                        <span className='track-name'>{tracks.name}</span>
+                                        <span className='artist-name' >{tracks.artists[0].name}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </div>
+        ) : (
+            <Loading />
         )
     )
 }
