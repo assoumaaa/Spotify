@@ -24,7 +24,7 @@ const TopTracksArtists = ({ topArtists, topTracks }) => {
                             let key = artist.id;
                             return (
                                 <div className="artists" key={key}>
-                                    <img src={artist.images[2].url} alt='artist' />
+                                    <img src={artist.images[0].url} alt='artist' />
                                     <span >{artist.name}</span>
                                 </div>
                             );

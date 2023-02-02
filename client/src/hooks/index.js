@@ -129,18 +129,24 @@ export const GetTopTracks = () => {
 
 
 // API CALL TO GET THE TOP ARTISTS OF A USER
-export const GetTopArtists = () => {
+export const GetTopArtists = (filter) => {
+
+    if (filter === "All Time") filter = 'long_term';
+    else if (filter === "Last 6 Months") filter = 'medium_term';
+    else filter = 'short_term';
+
     const [artists, setArtists] = useState({})
     useEffect(() => {
-        spotifyApi.getMyTopArtists()
+        spotifyApi.getMyTopArtists({ time_range: filter })
             .then(function (data) {
                 setArtists(data);
             }, function (err) {
                 console.log('Something went wrong!', err);
                 return err;
             });
-    }, []);
-    return artists;
+    }, [filter]);
+
+    return artists.items;
 }
 
 

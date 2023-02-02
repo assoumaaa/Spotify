@@ -2,16 +2,62 @@
 
 
 .topArtists {
-    color: white;
     display: flex;
-    height: 100%;
-    width: 100%;
-    
-    .title{
+    flex-direction: column;
+    padding: 5rem;
+    gap: 5rem;
+    color: white;
+    font-family: 'Didact Gothic', sans-serif;
+    background-color: $background;
+
+    .titles {
         display: flex;
-    
-        .sorting{
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        span {
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+
+        .sorting {
             display: flex;
+            gap: 3rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+
+            .selected {
+                text-decoration: underline solid $spotify;
+            }
         }
     }
+
+    .info {
+        display: flex;
+        gap: 3rem;
+        flex-wrap: wrap;
+        width: 90vw;
+        
+        
+
+        .eachArtists {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+
+            img {
+                border-radius: 50%;
+                width: 12rem;
+                height: 11rem;
+            }
+        }
+
+    }
+
+
+
 }

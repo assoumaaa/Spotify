@@ -24,7 +24,7 @@ const Nav = () => {
                 <div className="list">
                     {
                         navTitles.map((title, index) => (
-                            <a className={`${index === selectedIndex ? 'selected' : ''}`} href={hrefs[index]} >
+                            <a className={`${index === selectedIndex ? 'selected' : ''}`} href={hrefs[index]} key={index}>
                                 <div className="bar-items" onClick={() => setSelectedIndex(index)}>
                                     <div className="information">
                                         <div className="icon">{navIcons[index]}</div>
