@@ -129,7 +129,8 @@ export const GetTopTracks = (filter) => {
                 return err;
             });
     }, [filter]);
-    return tracks;
+    
+    return tracks.items;
 }
 
 

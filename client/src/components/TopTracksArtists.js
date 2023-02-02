@@ -35,13 +35,13 @@ const TopTracksArtists = ({ topArtists, topTracks }) => {
                     <div className="mapping-wrapper">
                         <div className="intro">
                             <span className='title'>Top Tracks Of All Time</span>
-                            <button>See More</button>
+                            <a href='/topTracks'><button>See More</button></a>
                         </div>
                         {topTracks.map(tracks => {
                             let key = tracks.id;
                             return (
                                 <div className="tracks" key={key}>
-                                    <img src={tracks.album.images[2].url} alt='cover' />
+                                    <img src={tracks.album.images[0].url} alt='cover' />
                                     <div className="track-artist-name">
                                         <span className='track-name'>{tracks.name}</span>
                                         <span className='artist-name' >{tracks.artists[0].name}</span>

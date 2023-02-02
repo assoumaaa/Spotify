@@ -33,7 +33,7 @@ const TopArtists = () => {
             artists.map((eachArtists) => {
               return (
                 <div className="eachArtists" key={eachArtists.id}>
-                  <img src={eachArtists.images[0].url} />
+                  <img src={eachArtists.images[0].url} alt='artists'/>
                   <span>{eachArtists.name}</span>
                 </div>
               )
