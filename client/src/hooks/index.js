@@ -113,17 +113,22 @@ export const GetUserInfo = () => {
 
 
 // API CALL TO GET THE TOP TRACKS OF A USER
-export const GetTopTracks = () => {
+export const GetTopTracks = (filter) => {
+
+    if (filter === "All Time") filter = 'long_term';
+    else if (filter === "Last 6 Months") filter = 'medium_term';
+    else filter = 'short_term';
+
     const [tracks, setTracks] = useState({})
     useEffect(() => {
-        spotifyApi.getMyTopTracks()
+        spotifyApi.getMyTopTracks({ time_range: filter })
             .then(function (data) {
                 setTracks(data);
             }, function (err) {
                 console.log('Something went wrong!', err);
                 return err;
             });
-    }, []);
+    }, [filter]);
     return tracks;
 }
 
