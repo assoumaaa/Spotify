@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../sass/Nav.scss';
 import { BsSpotify } from "react-icons/bs";
 import { RiUser3Fill, RiMusic2Fill, RiPlayList2Fill, RiMicFill, RiSkipBackFill } from "react-icons/ri";
@@ -8,10 +8,14 @@ const Nav = () => {
 
     const navTitles = ['Profile', 'Top Artists', 'Top Tracks', 'Recent', 'Playlists']
     const navIcons = [<RiUser3Fill />, <RiMicFill />, <RiMusic2Fill />, <RiSkipBackFill />, <RiPlayList2Fill />]
-    const hrefs = ['/', '/topArtists', '/', '/', '/']
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const hrefs = ['/', '/topArtists', '/topTracks', '/', '/']
+    const [selectedIndex, setSelectedIndex] = useState();
 
-
+    useEffect(() => {
+        const currentPath = window.location.pathname;
+        const selectedIndex = hrefs.findIndex(href => href === currentPath);
+        setSelectedIndex(selectedIndex);
+    }, []);
 
     return (
         <div className="nav">
@@ -20,14 +24,14 @@ const Nav = () => {
                 <div className="list">
                     {
                         navTitles.map((title, index) => (
-                            <div className={`bar-items ${index === selectedIndex ? 'selected' : ''}`} onClick={() => setSelectedIndex(index)}>
-                                <a href={hrefs[index]} >
+                            <a className={`${index === selectedIndex ? 'selected' : ''}`} href={hrefs[index]} >
+                                <div className="bar-items" onClick={() => setSelectedIndex(index)}>
                                     <div className="information">
                                         <div className="icon">{navIcons[index]}</div>
                                         <span>{title}</span>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         ))
                     }
                 </div>
@@ -36,5 +40,4 @@ const Nav = () => {
         </div>
     )
 }
-
 export default Nav
