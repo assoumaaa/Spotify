@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
+import { removeHash } from '../utils';
 
 
 
@@ -51,15 +52,7 @@ export const GetToken = () => {
             });
         }
 
-        var uri = window.location.toString();
-        if (uri.indexOf("#") > 0) {
-            var clean_uri = uri.substring(0,
-                uri.indexOf("#"));
-
-            window.history.replaceState({},
-                document.title, clean_uri);
-            window.location.reload();
-        }
+        removeHash()
         setToken(token)
     }, [])
     return { token }
@@ -84,6 +77,8 @@ export const Logout = () => {
     window.localStorage.removeItem("token_timestamp");
     window.location.reload();
 }
+
+
 
 
 // API CALLS ***********************************************************************************************
@@ -129,7 +124,7 @@ export const GetTopTracks = (filter) => {
                 return err;
             });
     }, [filter]);
-    
+
     return tracks.items;
 }
 

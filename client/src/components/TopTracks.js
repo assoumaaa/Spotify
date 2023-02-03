@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { GetTopTracks } from '../hooks';
 import '../sass/TopTracks.scss'
+import { formatDurationForHumans } from '../utils/index'
 
 
 const TopTracks = () => {
@@ -13,8 +14,8 @@ const TopTracks = () => {
     setFilter(event.target.textContent);
   };
 
-  console.log(tracks);
 
+  console.log(tracks)
   return (
     tracks !== undefined && (
       <div className="topTracks">
@@ -37,9 +38,15 @@ const TopTracks = () => {
               return (
                 <div className="eachTrack" key={eachTrack.id}>
                   <img src={eachTrack.album.images[0].url} alt='track' />
-                  <div className="track-artist-name">
-                    <span className='track-name'>{eachTrack.name}</span>
-                    <span className='artist-name' >{eachTrack.artists[0].name}</span>
+                  <div className="trackInformation">
+                    <div className="left">
+                      <span className='track-name'>{eachTrack.name}</span>
+                      <span className='artist-name' >{eachTrack.artists[0].name}</span>
+                    </div>
+                    <div className="right">
+                      <span className='artist-name' >{formatDurationForHumans(eachTrack.duration_ms)}</span>
+                      <span className='release'>{eachTrack.album.release_date}</span>
+                    </div>
                   </div>
                 </div>
               )

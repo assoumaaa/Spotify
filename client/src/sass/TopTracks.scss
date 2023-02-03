@@ -52,10 +52,31 @@
                 height: 5rem;
             }
 
-            .track-artist-name{
+            .trackInformation {
                 display: flex;
-                flex-direction: column;
-                gap: 2rem;
+                justify-content: space-between;
+                width: 100%;
+
+                .left {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5rem;
+
+                    .artist-name {
+                        color: gray;
+                    }
+                }
+
+                .right {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5rem;
+                    justify-content: center;
+
+                    .release {
+                        color: gray;
+                    }
+                }
             }
         }
     }
