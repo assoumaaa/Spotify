@@ -35,7 +35,7 @@ export const GetToken = () => {
         let tokenTimeStamp = getLocalTimeStamp()
         let refresh_token = getLocalRefreshToken()
 
-
+        console.log('this is the value of token: ' + token)
 
         if (!token && hash) {
             console.log('i am inside this function and will refresh my token!')
@@ -46,7 +46,8 @@ export const GetToken = () => {
             setLocalRefreshToken(refresh_token)
         }
 
-        if (!token || Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME) {
+
+        if (!token || token === undefined || Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME) {
             console.warn('Access token has expired, refreshing...');
             refreshAccessToken().then(newToken => {
                 setLocalAccessToken(newToken);
@@ -54,6 +55,8 @@ export const GetToken = () => {
                 window.location.reload();
             });
         }
+
+
 
         removeHash()
         setToken(token)
@@ -67,7 +70,8 @@ export const GetToken = () => {
 // REFRESH THE TOKEN
 const refreshAccessToken = async () => {
     try {
-        const { data } = await axios.get(`http://localhost:8888/refresh_token?refresh_token=${getLocalRefreshToken()}`);
+        const { data } = await axios.get(`/refresh_token?refresh_token=${getLocalRefreshToken()}`);
+        console.log(data.access_token)
         return data.access_token;
     } catch (e) {
         console.error(e);

@@ -19,6 +19,8 @@
     "spotify-web-api-js": "^1.5.2",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://spotify-analyser.herokuapp.com",
+  "proxy": "http://localhost:8888",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
