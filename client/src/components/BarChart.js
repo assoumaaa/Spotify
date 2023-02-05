@@ -4,10 +4,7 @@ import { Chart } from "react-google-charts";
 
 const BarChart = ({ data }) => {
 
-    console.log(data);
-
     return (
-
         <Chart
             chartType="BarChart"
             data={data}

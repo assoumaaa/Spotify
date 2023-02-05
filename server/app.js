@@ -1,23 +1,18 @@
-/**
- * This is an example of a basic node.js script that performs
- * the Authorization Code oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
- * For more information, read
- * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
- */
-
+require('dotenv').config()
 var express = require('express'); // Express web server framework
 var request =
- require('request'); // "Request" library
+  require('request'); // "Request" library
 var cors = require('cors');
+const path = require('path');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = '01b8adbe05144e278b287426f8cbdfdc'; // Your client id
-var client_secret = '7625cc1955df40dfa88055bd4e45be88'; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
-var frontend_uri = 'http://localhost:3000' // Your frontend uri
+
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+const FRONTEND_URI = process.env.FRONTEND_URI;
+const PORT = process.env.PORT || 8888;
 
 /**
  * Generates a random string containing numbers and letters
@@ -38,6 +33,7 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
+app.use(express.static(path.resolve(__dirname, './client/build')));
 app.use(express.static(__dirname + '/public'))
   .use(cors())
   .use(cookieParser());
@@ -70,7 +66,7 @@ app.get('/callback', function (req, res) {
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if (state === null || state !== storedState) {
-    res.redirect(frontend_uri + '/#' +
+    res.redirect(FRONTEND_URI + '/#' +
       querystring.stringify({
         error: 'state_mismatch'
       }));
@@ -107,13 +103,13 @@ app.get('/callback', function (req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect(frontend_uri + '/#' +
+        res.redirect(FRONTEND_URI + '/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
           }));
       } else {
-        res.redirect(frontend_uri + '/' +
+        res.redirect(FRONTEND_URI + '/' +
           querystring.stringify({
             error: 'invalid_token'
           }));
@@ -146,6 +142,9 @@ app.get('/refresh_token', function (req, res) {
   });
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+});
 
-console.log('Listening on 8888');
-app.listen(8888);
+console.log(`Listening on ${PORT}`);
+app.listen(PORT);

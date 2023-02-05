@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom"
 import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
 import { removeHash } from '../utils';
@@ -6,6 +7,7 @@ import { removeHash } from '../utils';
 
 
 var spotifyApi = new SpotifyWebApi();
+
 
 
 // TOKEN ***********************************************************************************************
@@ -59,7 +61,7 @@ export const GetToken = () => {
 }
 
 
-// call for new token 
+// REFRESH THE TOKEN
 const refreshAccessToken = async () => {
     try {
         const { data } = await axios.get(`http://localhost:8888/refresh_token?refresh_token=${getLocalRefreshToken()}`);
@@ -77,6 +79,13 @@ export const Logout = () => {
     window.localStorage.removeItem("token_timestamp");
     window.location.reload();
 }
+
+export const NavigateToEachTrack = (eachTrack) => {
+    const navigate = useNavigate();
+    return () => {
+        navigate(`/track/${eachTrack.id}`, { state: { track: eachTrack } });
+    };
+};
 
 
 
@@ -127,9 +136,6 @@ export const GetTopTracks = (filter) => {
 
     return tracks.items;
 }
-
-
-
 
 
 // API CALL TO GET THE TOP ARTISTS OF A USER GIVEN FILTER RANGE
@@ -228,7 +234,6 @@ export const GetRecentTracks = () => {
 
     return recentTracks.items;
 }
-
 
 
 // API CALL TO GET PLAYLISTS OF A USER
