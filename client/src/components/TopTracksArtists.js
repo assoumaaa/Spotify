@@ -2,13 +2,23 @@ import { React, useState } from 'react'
 import '../sass/TopTracksArtists.scss'
 import Loading from './Loading';
 import { Audio } from 'react-loader-spinner'
+import { AiFillInfoCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom"
+
+
 
 
 
 
 const TopTracksArtists = ({ topArtists, topTracks }) => {
 
- 
+    const navigate = useNavigate()
+    const handleTrackInformation = (eachTrack) => {
+        console.log(eachTrack);
+        navigate(`/track/${eachTrack.id}`, { state: { track: eachTrack } });
+    }
+
+
     return (
         topArtists && topTracks ? (
             <div className="top-container">
@@ -40,6 +50,9 @@ const TopTracksArtists = ({ topArtists, topTracks }) => {
                             return (
                                 <div className="tracks" key={key}>
                                     <img src={tracks.album.images[0].url} alt='cover' />
+                                    <div className="overlay">
+                                        <AiFillInfoCircle onClick={() => handleTrackInformation(tracks)} className='featuresIcon' />
+                                    </div>
                                     <div className="track-artist-name">
                                         <span className='track-name'>{tracks.name}</span>
                                         <span className='artist-name' >{tracks.artists[0].name}</span>

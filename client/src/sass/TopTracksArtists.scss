@@ -73,6 +73,8 @@
                 display: flex;
                 align-items: center;
                 gap: 1rem;
+                position: relative;
+
 
                 img {
                     width: 70px;
@@ -86,6 +88,33 @@
 
                     .artist-name {
                         color: gray;
+                    }
+                }
+
+                .overlay {
+                    display: flex;
+                    align-items: center;
+                    position: absolute;
+                    top: 25%;
+                    left: 5%;
+
+                    opacity: 0;
+                    transition: .3s ease;
+
+                    .featuresIcon{
+                        font-size: 2rem;
+                    }
+                }
+
+                &:hover {
+
+                    .overlay {
+                        opacity: 1;
+                    }
+
+                    img {
+                        transition: all .5s;
+                        opacity: 0.3;
                     }
                 }
             }
