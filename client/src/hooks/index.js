@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom"
 import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
 import { removeHash } from '../utils';
@@ -37,6 +36,7 @@ export const GetToken = () => {
         let refresh_token = getLocalRefreshToken()
 
 
+
         if (!token && hash) {
             console.log('i am inside this function and will refresh my token!')
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
@@ -46,7 +46,7 @@ export const GetToken = () => {
             setLocalRefreshToken(refresh_token)
         }
 
-        if (Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME || !token) {
+        if (!token || Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME) {
             console.warn('Access token has expired, refreshing...');
             refreshAccessToken().then(newToken => {
                 setLocalAccessToken(newToken);
@@ -55,12 +55,13 @@ export const GetToken = () => {
             });
         }
 
+        removeHash()
         setToken(token)
     }, [])
     return { token }
 }
 
-//  removeHash()
+
 
 
 // REFRESH THE TOKEN
