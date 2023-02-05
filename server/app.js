@@ -11,9 +11,15 @@ var cookieParser = require('cookie-parser');
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI || 'http://localhost:8888/callback';
-const FRONTEND_URI = process.env.REACT_APP_FRONTEND_URI || 'http://localhost:3000';;
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+const FRONTEND_URI = process.env.REACT_APP_FRONTEND_URI;
 const PORT = process.env.PORT || 8888;
+
+
+if (process.env.NODE_ENV === 'development') {
+  REDIRECT_URI = 'http://localhost:8888/callback';
+  FRONTEND_URI = 'http://localhost:3000';
+}
 
 
 /**
