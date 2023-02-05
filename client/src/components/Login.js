@@ -7,7 +7,7 @@ const Login = () => {
     const LOGIN_URI =
         process.env.NODE_ENV !== 'production'
             ? 'http://localhost:8888/login'
-            :'https://spotify-analyser.herokuapp.com/login';
+            : 'https://spotify-analyser.herokuapp.com/login';
     return (
         <div className="login">
             <div className="container">
