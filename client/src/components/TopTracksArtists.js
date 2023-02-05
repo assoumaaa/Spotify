@@ -1,16 +1,14 @@
 import { React, useState } from 'react'
 import '../sass/TopTracksArtists.scss'
 import Loading from './Loading';
+import { Audio } from 'react-loader-spinner'
+
 
 
 
 const TopTracksArtists = ({ topArtists, topTracks }) => {
 
-    const [isLoading, setIsLoading] = useState(true);
-    if (isLoading) {
-        setIsLoading(false);
-    }
-    
+ 
     return (
         topArtists && topTracks ? (
             <div className="top-container">
@@ -53,7 +51,17 @@ const TopTracksArtists = ({ topArtists, topTracks }) => {
                 </div>
             </div>
         ) : (
-            <Loading />
+            <div className="loading">
+                <Audio
+                    height="120"
+                    width="190"
+                    radius="9"
+                    color="gray"
+                    ariaLabel="loading"
+                    wrapperStyle
+                    wrapperClass
+                />
+            </div>
         )
     )
 }

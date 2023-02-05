@@ -6,8 +6,8 @@ import Profile from './Profile';
 
 const App = () => {
   const { token } = GetToken();
-  
-  return token ? <Profile /> : <Login />
+
+  return token  ? <Profile /> : <Login />
 }
 
 export default App

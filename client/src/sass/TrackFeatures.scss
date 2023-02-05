@@ -1,0 +1,53 @@
+@import '../sass/Global.scss';
+
+.trackFeatures {
+    display: flex;
+    gap: 2rem;
+    padding: 7rem;
+    font-family: 'Didact Gothic', sans-serif;
+
+
+
+    img {
+        width: 16rem;
+        height: 15rem;
+    }
+
+    .trackDetails {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        color: gray;
+
+        .track-name {
+            font-size: 4rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .artist-name {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: $spotify;
+            color: white;
+            border: 1px solid $spotify;
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-align: center;
+
+            &:hover,
+            &:focus {
+                transition: all .5s;
+                background-color: #07d452;
+                color: black;
+            }
+        }
+    }
+}

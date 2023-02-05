@@ -1,6 +1,8 @@
 import React from 'react'
 import '../sass/Playlist.scss'
 import { GetMyPlaylists } from '../hooks'
+import { Audio } from 'react-loader-spinner'
+
 
 const Playlists = () => {
 
@@ -10,7 +12,7 @@ const Playlists = () => {
 
     return (
 
-        playlists && (
+        playlists ? (
             <div className="playlist">
                 <div className="titles">
                     <h1>Your Playlists</h1>
@@ -30,6 +32,18 @@ const Playlists = () => {
                         })
                     }
                 </div>
+            </div>
+        ) : (
+            <div className="loading">
+                <Audio
+                    height="120"
+                    width="190"
+                    radius="9"
+                    color="gray"
+                    ariaLabel="loading"
+                    wrapperStyle
+                    wrapperClass
+                />
             </div>
         )
     )

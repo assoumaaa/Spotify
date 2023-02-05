@@ -16,7 +16,7 @@
         justify-content: space-between;
         width: 100%;
 
-        span {
+        h1 {
             font-weight: bold;
             font-size: 2.5rem;
         }
@@ -40,6 +40,7 @@
         width: 85vw;
 
 
+
         .eachTrack {
             display: flex;
             align-items: center;
@@ -47,15 +48,39 @@
             font-size: 1rem;
             font-weight: 500;
 
-            img {
-                width: 6rem;
-                height: 5rem;
+
+
+            .image-container {
+                position: relative;
+
+
+                img {
+                    width: 6rem;
+                    height: 5rem;
+
+                }
+
+                .overlay {
+                    display: flex;
+                    align-items: center;
+                    position: absolute;
+                    top: 25%;
+                    left: 25%;
+
+                    opacity: 0;
+                    transition: .3s ease;
+                }
+
+                .featuresIcon {
+                    font-size: 3rem;
+                }
             }
+
 
             .trackInformation {
                 display: flex;
                 justify-content: space-between;
-                width: 100%;
+                width: 80%;
 
                 .left {
                     display: flex;
@@ -78,6 +103,19 @@
                     }
                 }
             }
+
+            &:hover {
+
+                .overlay {
+                    opacity: 1;
+                }
+
+                img {
+                    transition: all .5s;
+                    opacity: 0.3;
+                }
+            }
         }
+
     }
 }

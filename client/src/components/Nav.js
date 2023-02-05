@@ -8,14 +8,14 @@ const Nav = () => {
 
     const navTitles = ['Profile', 'Top Artists', 'Top Tracks', 'Recent', 'Playlists']
     const navIcons = [<RiUser3Fill />, <RiMicFill />, <RiMusic2Fill />, <RiSkipBackFill />, <RiPlayList2Fill />]
-    const hrefs = ['/', '/topArtists', '/topTracks', '/', '/']
+    const hrefs = ['/', '/topArtists', '/topTracks', '/recentTracks', '/playlists']
     const [selectedIndex, setSelectedIndex] = useState();
 
     useEffect(() => {
         const currentPath = window.location.pathname;
         const selectedIndex = hrefs.findIndex(href => href === currentPath);
         setSelectedIndex(selectedIndex);
-    }, []);
+    }, [hrefs]);
 
     return (
         <div className="nav">

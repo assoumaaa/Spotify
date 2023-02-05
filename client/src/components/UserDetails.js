@@ -9,7 +9,7 @@ const UserDetails = ({ user, following, playlists }) => {
         <div className="avatar">
             <img src={user.images[0].url} alt='user_picture' />
             <div className="information-wrapper">
-            <span className='username'>{user.display_name}</span>
+                <span className='username'>{user.display_name}</span>
                 <div className="user-information">
                     <div className="each">
                         <span className='numbers'>{user.followers.total}</span>
@@ -24,7 +24,7 @@ const UserDetails = ({ user, following, playlists }) => {
                         <span> Playlists </span>
                     </div>
                 </div>
-                
+
                 <button onClick={Logout}>Logout</button>
             </div>
         </div>

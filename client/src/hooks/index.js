@@ -43,7 +43,7 @@ export const GetToken = () => {
             setLocalRefreshToken(refresh_token)
         }
 
-        if (Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME) {
+        if (Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME || !token) {
             console.warn('Access token has expired, refreshing...');
             refreshAccessToken().then(newToken => {
                 setLocalAccessToken(newToken);
@@ -129,7 +129,10 @@ export const GetTopTracks = (filter) => {
 }
 
 
-// API CALL TO GET THE TOP ARTISTS OF A USER
+
+
+
+// API CALL TO GET THE TOP ARTISTS OF A USER GIVEN FILTER RANGE
 export const GetTopArtists = (filter) => {
 
     if (filter === "All Time") filter = 'long_term';
@@ -171,6 +174,78 @@ export const GetArtistsTracks = () => {
     }, []);
 
     return top;
+}
+
+
+// API CALL TO GET FEATURES OF A TRACK GIVEN THE ID
+export const GetTrackFeatures = (id) => {
+
+    const [features, setFeatures] = useState({})
+    useEffect(() => {
+        spotifyApi.getAudioFeaturesForTrack(id)
+            .then(function (data) {
+                setFeatures(data);
+            }, function (err) {
+                console.log('Something went wrong!', err);
+                return err;
+            });
+    }, [id]);
+
+    return features;
+}
+
+// API CALL TO GET ANALYSIS OF A TRACK GIVEN THE ID
+export const GetTrackAnalaysis = (id) => {
+
+    const [analysis, setAnalaysis] = useState({})
+    useEffect(() => {
+        spotifyApi.getAudioAnalysisForTrack(id)
+            .then(function (data) {
+                setAnalaysis(data);
+            }, function (err) {
+                console.log('Something went wrong!', err);
+                return err;
+            });
+    }, [id]);
+
+    return analysis;
+}
+
+
+// API CALL TO GET RECENT TRACK
+export const GetRecentTracks = () => {
+
+    const [recentTracks, setRecentTracks] = useState({})
+    useEffect(() => {
+        spotifyApi.getMyRecentlyPlayedTracks()
+            .then(function (data) {
+                setRecentTracks(data);
+            }, function (err) {
+                console.log('Something went wrong!', err);
+                return err;
+            });
+    }, []);
+
+    return recentTracks.items;
+}
+
+
+
+// API CALL TO GET PLAYLISTS OF A USER
+export const GetMyPlaylists = () => {
+
+    const [playlists, setPlaylists] = useState({})
+    useEffect(() => {
+        spotifyApi.getUserPlaylists()
+            .then(function (data) {
+                setPlaylists(data);
+            }, function (err) {
+                console.log('Something went wrong!', err);
+                return err;
+            });
+    }, []);
+
+    return playlists.items;
 }
 
 

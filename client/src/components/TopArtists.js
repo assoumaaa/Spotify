@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../sass/TopArtists.scss'
 import { GetTopArtists } from '../hooks';
+import { Audio } from 'react-loader-spinner'
+
 
 const TopArtists = () => {
 
@@ -13,18 +15,18 @@ const TopArtists = () => {
   };
 
   return (
-    artists && (
+    artists ? (
       <div className="topArtists">
         <div className="titles">
-          <span>Top Artists</span>
+          <h1>Top Artists</h1>
           <div className="sorting">
             {options.map(eachOption => {
-              return <a
+              return <span
                 key={eachOption}
                 onClick={handleClick}
                 className={filter === eachOption ? 'selected' : ''}>
                 {eachOption}
-              </a>
+              </span>
             })}
           </div>
         </div>
@@ -33,13 +35,25 @@ const TopArtists = () => {
             artists.map((eachArtists) => {
               return (
                 <div className="eachArtists" key={eachArtists.id}>
-                  <img src={eachArtists.images[0].url} alt='artists'/>
+                  <img src={eachArtists.images[0].url} alt='artists' />
                   <span>{eachArtists.name}</span>
                 </div>
               )
             })
           }
         </div>
+      </div>
+    ) : (
+      <div className="loading">
+        <Audio
+          height="120"
+          width="190"
+          radius="9"
+          color="gray"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
       </div>
     )
   )
