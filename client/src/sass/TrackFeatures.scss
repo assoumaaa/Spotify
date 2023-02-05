@@ -2,52 +2,68 @@
 
 .trackFeatures {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     gap: 2rem;
     padding: 7rem;
     font-family: 'Didact Gothic', sans-serif;
 
 
 
-    img {
-        width: 16rem;
-        height: 15rem;
-    }
-
-    .trackDetails {
+    .track-container {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        color: gray;
+        align-items: center;
+        flex: 0.5;
 
-        .track-name {
-            font-size: 4rem;
-            font-weight: bold;
-            color: white;
+        img {
+            width: 16rem;
+            height: 15rem;
         }
 
-        .artist-name {
-            font-size: 2rem;
-            font-weight: bold;
-        }
+        .trackDetails {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            color: gray;
 
-        button {
-            background-color: $spotify;
-            color: white;
-            border: 1px solid $spotify;
-            border-radius: 30px;
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-align: center;
+            .track-name {
+                font-size: 4rem;
+                font-weight: bold;
+                color: white;
+            }
 
-            &:hover,
-            &:focus {
-                transition: all .5s;
-                background-color: #07d452;
-                color: black;
+            .artist-name {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            button {
+                background-color: $spotify;
+                color: white;
+                border: 1px solid $spotify;
+                border-radius: 30px;
+                padding: 12px 30px;
+                font-size: 1rem;
+                font-weight: bold;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                text-align: center;
+
+                &:hover,
+                &:focus {
+                    transition: all .5s;
+                    background-color: #07d452;
+                    color: black;
+                }
             }
         }
+    }
+
+    .chart {
+        flex: 0.5;
     }
 }
