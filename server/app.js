@@ -33,7 +33,7 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(path.resolve(__dirname, './client/build')));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.use(express.static(__dirname + '/public'))
   .use(cors())
   .use(cookieParser());
@@ -142,8 +142,8 @@ app.get('/refresh_token', function (req, res) {
   });
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+app.get('*', function (request, response) {
+  response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
 });
 
 console.log(`Listening on ${PORT}`);
