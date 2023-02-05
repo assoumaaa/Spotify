@@ -38,6 +38,7 @@ export const GetToken = () => {
 
 
         if (!token && hash) {
+            console.log('i am inside this function and will refresh my token!')
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             refresh_token = hash.substring(1).split("&").find(elem => elem.startsWith("refresh_token")).split("=")[1]
             setLocalAccessToken(token)
@@ -54,11 +55,12 @@ export const GetToken = () => {
             });
         }
 
-        removeHash()
         setToken(token)
     }, [])
     return { token }
 }
+
+//  removeHash()
 
 
 // REFRESH THE TOKEN
@@ -79,14 +81,6 @@ export const Logout = () => {
     window.localStorage.removeItem("token_timestamp");
     window.location.reload();
 }
-
-export const NavigateToEachTrack = (eachTrack) => {
-    const navigate = useNavigate();
-    return () => {
-        navigate(`/track/${eachTrack.id}`, { state: { track: eachTrack } });
-    };
-};
-
 
 
 
