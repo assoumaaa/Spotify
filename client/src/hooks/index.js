@@ -31,7 +31,7 @@ export const GetToken = () => {
 
     useEffect(() => {
         const hash = window.location.hash
-        console.log(hash);
+
         let token = getLocalAccessToken()
         let tokenTimeStamp = getLocalTimeStamp()
         let refresh_token = getLocalRefreshToken()
@@ -45,6 +45,8 @@ export const GetToken = () => {
             setLocalAccessToken(token)
             setLocalTimeStamp()
             setLocalRefreshToken(refresh_token)
+            removeHash()
+            window.location.reload()
         }
 
 
@@ -57,7 +59,6 @@ export const GetToken = () => {
             });
         }
 
-
         setToken(token)
     }, [])
 
@@ -65,7 +66,7 @@ export const GetToken = () => {
 }
 
 
-//removeHash()
+//
 
 // REFRESH THE TOKEN
 const refreshAccessToken = async () => {
