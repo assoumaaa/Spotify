@@ -36,7 +36,7 @@ export const GetToken = () => {
         let tokenTimeStamp = getLocalTimeStamp()
         let refresh_token = getLocalRefreshToken()
 
-        
+
         if (hash) {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             refresh_token = hash.substring(1).split("&").find(elem => elem.startsWith("refresh_token")).split("=")[1]
@@ -50,6 +50,15 @@ export const GetToken = () => {
 
         if (Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME || !token) {
             console.warn('Access token has expired, refreshing...');
+            refreshAccessToken().then(newToken => {
+                setLocalAccessToken(newToken);
+                setLocalTimeStamp();
+                window.location.reload();
+            });
+        }
+
+        if (token === undefined) {
+            console.warn('refreshing access token.....');
             refreshAccessToken().then(newToken => {
                 setLocalAccessToken(newToken);
                 setLocalTimeStamp();
