@@ -31,6 +31,7 @@ export const GetToken = () => {
 
     useEffect(() => {
         const hash = window.location.hash
+        console.log(hash);
         let token = getLocalAccessToken()
         let tokenTimeStamp = getLocalTimeStamp()
         let refresh_token = getLocalRefreshToken()
@@ -47,7 +48,7 @@ export const GetToken = () => {
         }
 
 
-        if (!token || token === undefined || Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME) {
+        if (Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME || !token) {
             console.warn('Access token has expired, refreshing...');
             refreshAccessToken().then(newToken => {
                 setLocalAccessToken(newToken);
@@ -61,6 +62,7 @@ export const GetToken = () => {
         removeHash()
         setToken(token)
     }, [])
+
     return { token }
 }
 
