@@ -38,7 +38,7 @@ export const GetToken = () => {
 
         console.log('this is the value of token: ' + token)
 
-        if (!token && hash) {
+        if (hash) {
             console.log('i am inside this function and will refresh my token!')
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             refresh_token = hash.substring(1).split("&").find(elem => elem.startsWith("refresh_token")).split("=")[1]
@@ -58,8 +58,6 @@ export const GetToken = () => {
         }
 
 
-
-        removeHash()
         setToken(token)
     }, [])
 
@@ -67,7 +65,7 @@ export const GetToken = () => {
 }
 
 
-
+//removeHash()
 
 // REFRESH THE TOKEN
 const refreshAccessToken = async () => {

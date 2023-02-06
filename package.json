@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "connect-history-api-fallback": "^2.0.0",
     "dotenv": "^16.0.3",
     "spotify-web-api-js": "^1.5.2"
   },

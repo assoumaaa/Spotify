@@ -1,5 +1,7 @@
 
-require('dotenv').config();
+require('dotenv').config({ path: '/Users/omarassouma/Spotify/.env' });
+
+
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -11,6 +13,11 @@ if (process.env.NODE_ENV !== 'production') {
   REDIRECT_URI = 'http://localhost:8888/callback';
   FRONTEND_URI = 'http://localhost:3000';
 }
+
+console.log(CLIENT_ID);
+console.log(CLIENT_SECRET);
+console.log(REDIRECT_URI);
+console.log(FRONTEND_URI);
 
 const express = require('express');
 const request = require('request');
