@@ -23,6 +23,7 @@
 
     .info {
         display: flex;
+
         gap: 4rem;
         flex-wrap: wrap;
         width: 87vw;
@@ -51,6 +52,39 @@
                 .count{
                     color: gray;
                     font-size: smaller;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 890px) {
+
+    .playlist {
+        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        
+        .titles {
+            flex-direction: column;
+            gap: 1rem;
+
+            .sorting {
+                font-size: 1rem;
+            }
+        }
+
+        .info {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+
+
+            .eachArtists {
+                font-size: .8rem;
+                img {
+                    width: 8rem;
+                    height: 8rem;
                 }
             }
         }

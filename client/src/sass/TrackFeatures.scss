@@ -65,5 +65,57 @@
 
     .chart {
         flex: 0.5;
+        width: 20rem;
+    }
+}
+
+
+@media screen and (max-width : 890px) {
+
+    .trackFeatures {
+        flex-direction: column;
+        gap: 1rem;
+
+        .track-container {
+            img {
+                width: 10rem;
+                height: 10rem;
+            }
+
+            .trackDetails {
+
+                gap: 1rem;
+
+
+                .track-name {
+                    font-size: 1.5rem;
+                }
+
+                .artist-name {
+                    font-size: 2rem;
+                    font-weight: bold;
+                }
+
+                button {
+                    background-color: $spotify;
+                    color: white;
+                    border: 1px solid $spotify;
+                    border-radius: 30px;
+                    padding: 12px 30px;
+                    font-size: .5rem;
+                    font-weight: bold;
+                    letter-spacing: 3px;
+                    text-transform: uppercase;
+                    text-align: center;
+
+                    &:hover,
+                    &:focus {
+                        transition: all .5s;
+                        background-color: #07d452;
+                        color: black;
+                    }
+                }
+            }
+        }
     }
 }

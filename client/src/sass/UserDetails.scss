@@ -3,7 +3,7 @@
 .avatar {
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     flex-direction: row;
     gap: 1rem;
     color: $spotify;
@@ -73,6 +73,46 @@
                 .numbers {
                     color: gray;
                     font-size: 1.3rem;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width : 890px) {
+
+    .avatar {
+        gap: 1rem;
+        .information-wrapper {
+            .username {
+                font-size: 3rem;
+            }
+
+            img {
+                border-radius: 0px;
+
+            }
+
+            .user-information {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+
+
+
+
+                .each {
+
+                    height: 3rem;
+                    font-size: .7rem;
+
+
+                    .numbers {
+
+                        font-size: 1rem;
+                    }
                 }
             }
         }

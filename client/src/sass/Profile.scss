@@ -8,3 +8,10 @@
         background-color: $background;
     }
 }
+
+@media screen and (max-width : 890px) {
+    .profile .sections {
+        margin-left: 0%;
+    }
+
+}
