@@ -57,7 +57,8 @@ export const GetToken = () => {
             });
         }
 
-        if (!token) {
+        console.log(typeof(token))
+        if (token === 'undefined') {
             console.warn('refreshing access token.....');
             refreshAccessToken().then(newToken => {
                 setLocalAccessToken(newToken);
