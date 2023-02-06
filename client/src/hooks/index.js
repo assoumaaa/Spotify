@@ -48,7 +48,7 @@ export const GetToken = () => {
         }
 
 
-        if (Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME) {
+        if (Date.now() - parseInt(tokenTimeStamp) > EXPIRATION_TIME || !token) {
             console.warn('Access token has expired, refreshing...');
             refreshAccessToken().then(newToken => {
                 setLocalAccessToken(newToken);

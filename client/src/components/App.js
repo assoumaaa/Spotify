@@ -7,8 +7,11 @@ import Profile from './Profile';
 const App = () => {
   const { token } = GetToken();
 
+  if (!token || token === 'undefined') {
+    return <Login />;
+  }
 
-  return token !== 'undefined' ? <Profile /> : <Login />;
+  return <Profile />;
 }
 
 export default App
