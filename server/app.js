@@ -14,11 +14,6 @@ if (process.env.NODE_ENV !== 'production') {
   FRONTEND_URI = 'http://localhost:3000';
 }
 
-console.log(CLIENT_ID);
-console.log(CLIENT_SECRET);
-console.log(REDIRECT_URI);
-console.log(FRONTEND_URI);
-
 const express = require('express');
 const request = require('request');
 const cors = require('cors');

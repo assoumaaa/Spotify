@@ -6,7 +6,6 @@ import Profile from './Profile';
 
 const App = () => {
   const { token } = GetToken();
-  console.log(token);
 
   return token ? <Profile /> : <Login />
 }

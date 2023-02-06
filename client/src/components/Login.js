@@ -4,7 +4,7 @@ import { BsSpotify } from "react-icons/bs";
 
 const Login = () => {
 
-    
+
     const LOGIN_URI =
         process.env.NODE_ENV !== 'production'
             ? 'http://localhost:8888/login'

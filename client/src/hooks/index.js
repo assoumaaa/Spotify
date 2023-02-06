@@ -36,10 +36,8 @@ export const GetToken = () => {
         let tokenTimeStamp = getLocalTimeStamp()
         let refresh_token = getLocalRefreshToken()
 
-        console.log('this is the value of token: ' + token)
-
+        
         if (hash) {
-            console.log('i am inside this function and will refresh my token!')
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             refresh_token = hash.substring(1).split("&").find(elem => elem.startsWith("refresh_token")).split("=")[1]
             setLocalAccessToken(token)
@@ -72,7 +70,6 @@ export const GetToken = () => {
 const refreshAccessToken = async () => {
     try {
         const { data } = await axios.get(`/refresh_token?refresh_token=${getLocalRefreshToken()}`);
-        console.log(data.access_token)
         return data.access_token;
     } catch (e) {
         console.error(e);
