@@ -122,10 +122,11 @@
 @media screen and (max-width : 890px) {
 
     .topTracks {
-        padding: 1rem;
+        padding: 2rem;
         align-items: center;
         justify-content: center;
         gap: 2rem;
+
         .titles {
             flex-direction: column;
             gap: 1rem;
