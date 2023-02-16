@@ -8,10 +8,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import '../sass/Profile.scss'
 import RecentTracks from './RecentTracks';
 import Playlists from './Playlists';
+import PlaylistFeatures from './PlaylistFeatures';
+import { GetAritsts } from '../hooks';
 
 
 const Profile = () => {
 
+
+    const artists = GetAritsts();
+    
     return (
         <div className="profile">
             <BrowserRouter>
@@ -22,6 +27,7 @@ const Profile = () => {
                         <Route path='/topArtists' element={<TopArtists />} />
                         <Route path='/topTracks' element={<TopTracks />} />
                         <Route path='/track/:trackID' element={<TrackFeatures />} />
+                        <Route path='/playlist/:playlistID' element={<PlaylistFeatures />} />
                         <Route path='/recentTracks' element={<RecentTracks />} />
                         <Route path='/playlists' element={<Playlists />} />
                     </Routes>
