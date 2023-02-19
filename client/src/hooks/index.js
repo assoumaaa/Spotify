@@ -113,7 +113,7 @@ export const GetUserInfo = () => {
 };
 
 
-// API CALL TO GET THE TOP TRACKS OF A USER
+// API CALL TO GET THE TOP TRACKS OF A USER GIVEN FILTER RANGE
 export const GetTopTracks = (filter) => {
 
     if (filter === "All Time") filter = 'long_term';
@@ -185,6 +185,7 @@ export const GetTrackFeatures = (id) => {
 
     const [features, setFeatures] = useState({})
     useEffect(() => {
+        if (!id) return;
         spotifyApi.getAudioFeaturesForTrack(id)
             .then(function (data) {
                 setFeatures(data);
@@ -196,6 +197,27 @@ export const GetTrackFeatures = (id) => {
 
     return features;
 }
+
+
+// API CALL TO GET FEATURES OF A TRACKS GIVEN THE ID
+export const GetTracksFeatures = (ids) => {
+
+    const [features, setFeatures] = useState({})
+    useEffect(() => {
+        spotifyApi.getAudioFeaturesForTracks(ids)
+            .then(function (data) {
+                setFeatures(data);
+            }, function (err) {
+                console.log('Something went wrong!', err);
+                return err;
+            });
+    }, [ids]);
+
+
+
+    return features['audio_features'];
+}
+
 
 // API CALL TO GET ANALYSIS OF A TRACK GIVEN THE ID
 export const GetTrackAnalaysis = (id) => {
@@ -250,8 +272,51 @@ export const GetMyPlaylists = () => {
     return playlists.items;
 }
 
+// API CALL TO GET TRACKS OF A PLAYLIST GIVEN ITS ID
+export const GetPlaylistTracks = (playlistID) => {
+
+    const [playlistTracks, setPlaylistTracks] = useState({})
+
+    useEffect(() => {
+        spotifyApi.getPlaylistTracks(playlistID)
+            .then(function (data) {
+                setPlaylistTracks(data);
+            }, function (err) {
+                console.log('Something went wrong!', err);
+                return err;
+            });
+    }, [playlistID]);
+
+    return playlistTracks.items;
+}
+
+export const GetPlaylistIDs = (playlistTracks) => {
+
+    if (!playlistTracks) return null;
+    return playlistTracks.map(eachTrack => eachTrack.track.id);
+
+}
 
 
+
+
+
+export const GetAritsts = () => {
+
+    const [aritsts, setArtists] = useState({})
+
+    useEffect(() => {
+        spotifyApi.getArtists(["6Ip8FS7vWT1uKkJSweANQK", "3TVXtAsR1Inumwj472S9r4", "0U7iI0Dk4Ojvi17nZboNO4", "1URnnhqYAYcrqrcwql10ft", "0LcJLqbBmaGUft1e9Mm8HV", "048LktY5zMnakWq7PTtFrz", "3a1tBryiczPAZpgoZN9Rzg"])
+            .then(function (data) {
+                setArtists(data);
+            }, function (err) {
+                console.log('Something went wrong!', err);
+                return err;
+            });
+    }, []);
+
+    return aritsts;
+}
 
 
 
