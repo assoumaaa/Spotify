@@ -2,12 +2,22 @@ import React from 'react'
 import '../sass/Playlist.scss'
 import { GetMyPlaylists } from '../hooks'
 import { Audio } from 'react-loader-spinner'
+import { AiFillInfoCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom"
+
+
 
 
 const Playlists = () => {
 
     const playlists = GetMyPlaylists();
-    console.log(playlists)
+    const navigate = useNavigate();
+
+
+    const handleTrackInformation = (eachPlaylist) => {
+        console.log(eachPlaylist)
+        navigate(`/playlist/${eachPlaylist.id}`, { state: { playlist: eachPlaylist } });
+    }
 
 
     return (
@@ -21,8 +31,13 @@ const Playlists = () => {
                     {
                         playlists.map((eachPlaylist) => {
                             return (
-                                <div className="eachArtists" key={eachPlaylist.id}>
-                                    <img src={eachPlaylist.images[0].url} alt='artists' />
+                                <div className="eachPlaylist" key={eachPlaylist.id}>
+                                    <div className="image-container">
+                                        <img src={eachPlaylist.images[0].url} alt='artists' />
+                                        <div className="overlay">
+                                            <AiFillInfoCircle className='featuresIcon' onClick={() => handleTrackInformation(eachPlaylist)} />
+                                        </div>
+                                    </div>
                                     <div className="name_tracks">
                                         <span className='name'>{eachPlaylist.name}</span>
                                         <span className='count'>{eachPlaylist.tracks.total} TRACKS</span>

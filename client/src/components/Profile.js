@@ -9,13 +9,9 @@ import '../sass/Profile.scss'
 import RecentTracks from './RecentTracks';
 import Playlists from './Playlists';
 import PlaylistFeatures from './PlaylistFeatures';
-import { GetAritsts } from '../hooks';
 
 
 const Profile = () => {
-
-
-    const artists = GetAritsts();
     
     return (
         <div className="profile">

@@ -25,6 +25,8 @@ const TopTracks = () => {
     navigate(`/track/${eachTrack.id}`, { state: { track: eachTrack } });
   }
 
+  
+
 
   return (
     tracks ? (

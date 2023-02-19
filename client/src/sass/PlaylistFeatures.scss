@@ -1,0 +1,159 @@
+@import '../sass/Global.scss';
+
+.playlistTracks {
+    display: flex;
+    background-color: $background;
+    font-family: 'Didact Gothic', sans-serif;
+
+
+    .left {
+        display: flex;
+        align-items: center;
+        padding-top: 5rem;
+        flex-direction: column;
+        flex: 0.4;
+        gap: 2rem;
+        background-color: $background;
+
+
+
+
+        img {
+            width: 18rem;
+            height: 18rem;
+        }
+
+
+        .playlistDetails {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: .5rem;
+
+            .playlist-name {
+                font-size: 2rem;
+                font-weight: bold;
+                color: white;
+            }
+
+
+            .owner {
+                color: gray;
+                font-size: 1.5rem;
+                font-size: .9rem;
+            }
+
+            .count {
+                color: white;
+            }
+
+        }
+
+
+    }
+
+    .right {
+        flex: 0.6;
+        display: flex;
+        flex-direction: column;
+        flex: 0.4;
+        color: white;
+        padding-top: 5rem;
+        gap: 2rem;
+
+
+
+
+
+        .eachTrack {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+
+
+
+            .image-container {
+                position: relative;
+
+
+                img {
+                    width: 6rem;
+                    height: 5rem;
+                }
+
+                .overlay {
+                    display: flex;
+                    align-items: center;
+                    position: absolute;
+                    top: 25%;
+                    left: 25%;
+
+                    opacity: 0;
+                    transition: .3s ease;
+                }
+
+                .featuresIcon {
+                    font-size: 3rem;
+                }
+            }
+
+
+            .trackInformation {
+                display: flex;
+                justify-content: space-between;
+                width: 80%;
+
+                .leftt {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5rem;
+
+                    .artist-name {
+                        color: gray;
+                    }
+                }
+
+                .rightt {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+
+                    .duration {
+                        color: gray;
+                    }
+                }
+            }
+
+            &:hover {
+
+                .overlay {
+                    opacity: 1;
+                }
+
+                img {
+                    transition: all .5s;
+                    opacity: 0.3;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media screen and (max-width : 890px) {
+
+    .playlistTracks{
+        flex-direction: column;
+
+        .right{
+            padding-top: 0rem;
+            padding: 2rem;
+        }
+    }
+
+}

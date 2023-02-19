@@ -14,6 +14,7 @@ const TopArtists = () => {
     setFilter(event.target.textContent);
   };
 
+  
   return (
     artists ? (
       <div className="topArtists">

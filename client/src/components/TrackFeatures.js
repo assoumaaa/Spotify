@@ -27,7 +27,7 @@ const TrackFeatures = () => {
     ];
 
 
-    console.log(features);
+    
 
     return (
         <div className="trackFeatures">
