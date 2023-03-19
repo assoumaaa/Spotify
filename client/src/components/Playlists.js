@@ -33,10 +33,24 @@ const Playlists = () => {
                             return (
                                 <div className="eachPlaylist" key={eachPlaylist.id}>
                                     <div className="image-container">
-                                        <img src={eachPlaylist.images[0].url} alt='artists' />
-                                        <div className="overlay">
-                                            <AiFillInfoCircle className='featuresIcon' onClick={() => handleTrackInformation(eachPlaylist)} />
-                                        </div>
+                                        {
+                                            eachPlaylist.images[0] ? (
+                                                <>
+                                                    <img src={eachPlaylist.images[0].url} alt='artists' />
+                                                    <div className="overlay">
+                                                        <AiFillInfoCircle className='featuresIcon' onClick={() => handleTrackInformation(eachPlaylist)} />
+                                                    </div>
+                                                </>
+                                            ) : <>
+                                                <img src='https://i.pinimg.com/736x/a1/72/1e/a1721e36d881dba6393f04b60e80181b.jpg' alt='playlistImage' />
+                                                <div className="overlay">
+                                                    <AiFillInfoCircle className='featuresIcon' onClick={() => handleTrackInformation(eachPlaylist)} />
+                                                </div>
+                                            </>
+
+
+
+                                        }
                                     </div>
                                     <div className="name_tracks">
                                         <span className='name'>{eachPlaylist.name}</span>

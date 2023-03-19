@@ -1,4 +1,5 @@
-<img width="1440" alt="Screen Shot 2023-02-07 at 1 55 57 PM" src="https://user-images.githubusercontent.com/94231603/217238470-92e93343-c024-426d-8cb5-75fb3439440d.png">
+
+![Screen Shot 2023-02-19 at 2 34 51 PM](https://user-images.githubusercontent.com/94231603/219945361-0c350eef-368c-4541-ba06-888ec1ee6a3e.png)
 
 
 # [Spotify Analyser](https://spotify-analyser.herokuapp.com)

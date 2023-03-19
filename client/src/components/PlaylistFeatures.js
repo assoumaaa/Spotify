@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams, useLocation } from 'react-router-dom';
-import {  GetPlaylistTracks } from '../hooks';
+import { GetPlaylistTracks } from '../hooks';
 import { formatDurationForHumans } from '../utils/index'
 import '../sass/PlaylistFeatures.scss'
 import { AiFillInfoCircle } from "react-icons/ai";
@@ -20,7 +20,7 @@ const PlaylistFeatures = () => {
     const playlistTracks = GetPlaylistTracks(playlistID.playlistID);
 
 
-    
+
 
 
 
@@ -37,7 +37,12 @@ const PlaylistFeatures = () => {
         playlistTracks && (
             <div className="playlistTracks">
                 <div className="left">
-                    <img src={eachPlaylist.images[0].url} alt='track' />
+                    {
+                        eachPlaylist.images[0] ? (
+                            <img src={eachPlaylist.images[0].url} alt='track' />
+                        ) : <img src='https://i.pinimg.com/736x/a1/72/1e/a1721e36d881dba6393f04b60e80181b.jpg' alt='playlistImage' />
+
+                    }
                     <div className="playlistDetails">
                         <span className='playlist-name'>{eachPlaylist.name}</span>
                         <span className='owner' >By {eachPlaylist.owner.display_name}</span>
