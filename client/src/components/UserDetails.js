@@ -7,11 +7,13 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 
 const UserDetails = ({ user, following, playlists }) => {
 
+    console.log(user)
+
     return (
         <div className="avatar">
             {
                 user.images[0] ? (
-                    <img src={user.images[0].url} alt='user_picture' />
+                    <img src={user.images[1].url} alt='user_picture' />
                 ) : <HiOutlineUserCircle className='noImageIcon'/>
             }
             <div className="information-wrapper">
