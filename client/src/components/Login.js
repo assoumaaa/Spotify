@@ -15,6 +15,7 @@ const Login = () => {
             <div className="container">
                 <BsSpotify className='spotify-icon' />
                 <a href={LOGIN_URI}><button className='spotify-login'> LOG IN TO SPOTIFY</button></a>
+                <span><a>Note :</a> please email me at <a className='email'>omarassouma@hotmail.com</a> your name and your spotify email for this to work due to Spotify API limitations! </span>
             </div>
         </div>
     )

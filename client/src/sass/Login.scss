@@ -20,6 +20,23 @@
             color: $spotify;
         }
 
+        span{
+            width: 50%;
+            font-size: 1rem;
+            line-height: 2rem;
+            color: gainsboro;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            a{
+                color: $spotify;
+            }
+
+            .email{
+                font-style: italic;
+            }
+        }
+
 
         .spotify-login {
             display: inline-block;
