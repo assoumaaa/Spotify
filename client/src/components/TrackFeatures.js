@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { GetTrackAnalaysis, GetTrackFeatures } from "../hooks";
+import { GetTrackFeatures } from "../hooks";
 import "../sass/TrackFeatures.scss";
 import BarChart from "./BarChart";
 
