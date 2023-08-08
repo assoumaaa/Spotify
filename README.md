@@ -3,7 +3,6 @@
 ![video](https://github.com/assoumaaa/spotify-analyser/assets/94231603/7a088af7-48b1-49c9-9742-d7b6af4703d6)
 
 
-# [Spotify Analyser](https://spotify-analyser.herokuapp.com)
 
 Welcome to Spotify Analyser, a web application that lets you track your top artists, top tracks, and find your top artists and tracks according to a specific time range, all while offering detailed features of each track and allowing you to play them directly on your Spotify account.
 
